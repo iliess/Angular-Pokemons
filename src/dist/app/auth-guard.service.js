@@ -9,30 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mock_pokemons_1 = require("./mock-pokemons");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var ListPokemonComponent = /** @class */ (function () {
-    //   private title: string = "Liste des pokémons";
-    function ListPokemonComponent(router) {
+var auth_service_1 = require("./auth.service");
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(authService, router) {
+        this.authService = authService;
         this.router = router;
     }
-    ListPokemonComponent.prototype.ngOnInit = function () {
-        this.pokemons = mock_pokemons_1.POKEMONS;
+    AuthGuard.prototype.canActivate = function (route, state) {
+        var url = state.url;
+        return this.checkLogin(url);
     };
-    ListPokemonComponent.prototype.selectPokemon = function (pokemon) {
-        alert("Vous avez cliqué sur " + pokemon.name);
-        var link = ['/pokemon', pokemon.id];
-        this.router.navigate(link);
+    AuthGuard.prototype.checkLogin = function (url) {
+        if (this.authService.isLoggedIn) {
+            return true;
+        }
+        this.authService.redirectUrl = url;
+        this.router.navigate(['/login']);
+        return false;
     };
-    ListPokemonComponent = __decorate([
-        core_1.Component({
-            selector: 'list-pokemon',
-            templateUrl: './app/list-pokemon.component.html',
-        }),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], ListPokemonComponent);
-    return ListPokemonComponent;
+    AuthGuard = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.ListPokemonComponent = ListPokemonComponent;
-//# sourceMappingURL=list-pokemon.component.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth-guard.service.js.map

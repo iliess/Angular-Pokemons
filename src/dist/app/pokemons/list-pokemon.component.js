@@ -18,10 +18,11 @@ var ListPokemonComponent = /** @class */ (function () {
         this.pokemonsServide = pokemonsServide;
     }
     ListPokemonComponent.prototype.ngOnInit = function () {
-        this.pokemons = this.pokemonsServide.getPokemons();
+        var _this = this;
+        this.pokemonsServide.getPokemons()
+            .subscribe(function (pokemons) { return _this.pokemons = pokemons; });
     };
     ListPokemonComponent.prototype.selectPokemon = function (pokemon) {
-        alert("Vous avez cliqué sur " + pokemon.name);
         var link = ['/pokemon', pokemon.id];
         this.router.navigate(link);
     };

@@ -11,7 +11,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 // routes
 var appRoutes = [
-    { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+    { path: '', redirectTo: 'pokemon/all', pathMatch: 'full' },
     { path: '**', component: page_notfound_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {

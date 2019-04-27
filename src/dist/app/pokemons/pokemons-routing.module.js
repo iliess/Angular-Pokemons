@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var auth_guard_service_1 = require("./../auth-guard.service");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var list_pokemon_component_1 = require("./list-pokemon.component");
@@ -13,9 +14,15 @@ var detail_pokemon_component_1 = require("./detail-pokemon.component");
 var edit_pokemon_component_1 = require("./edit-pokemon.component");
 // les routes du module Pokémon
 var pokemonsRoutes = [
-    { path: 'pokemons', component: list_pokemon_component_1.ListPokemonComponent },
-    { path: 'pokemon/edit/:id', component: edit_pokemon_component_1.EditPokemonComponent },
-    { path: 'pokemon/:id', component: detail_pokemon_component_1.DetailPokemonComponent }
+    {
+        path: 'pokemon',
+        canActivate: [auth_guard_service_1.AuthGuard],
+        children: [
+            { path: 'all', component: list_pokemon_component_1.ListPokemonComponent },
+            { path: 'edit/:id', component: edit_pokemon_component_1.EditPokemonComponent },
+            { path: ':id', component: detail_pokemon_component_1.DetailPokemonComponent }
+        ]
+    }
 ];
 var PokemonRoutingModule = /** @class */ (function () {
     function PokemonRoutingModule() {

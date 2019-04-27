@@ -1,3 +1,4 @@
+import { LoaderComponent } from './../loader.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { PokemonsService } from './pokemons.service';
 
 import { PokemonFormComponent } from './pokemon-form.component';
 import { EditPokemonComponent } from './edit-pokemon.component';
+import { PokemonSearchComponent } from './search-pokemon.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { EditPokemonComponent } from './edit-pokemon.component';
 		DetailPokemonComponent,
 		EditPokemonComponent,
 		PokemonFormComponent,
+		PokemonSearchComponent,
+		LoaderComponent,
 		BorderCardDirective,
 		PokemonTypeColorPipe,
 	],

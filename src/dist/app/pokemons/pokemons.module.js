@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var loader_component_1 = require("./../loader.component");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var pokemons_routing_module_1 = require("./pokemons-routing.module");
@@ -17,6 +18,7 @@ var pokemon_type_color_pipe_1 = require("./pokemon-type-color.pipe");
 var pokemons_service_1 = require("./pokemons.service");
 var pokemon_form_component_1 = require("./pokemon-form.component");
 var edit_pokemon_component_1 = require("./edit-pokemon.component");
+var search_pokemon_component_1 = require("./search-pokemon.component");
 var PokemonsModule = /** @class */ (function () {
     function PokemonsModule() {
     }
@@ -32,6 +34,8 @@ var PokemonsModule = /** @class */ (function () {
                 detail_pokemon_component_1.DetailPokemonComponent,
                 edit_pokemon_component_1.EditPokemonComponent,
                 pokemon_form_component_1.PokemonFormComponent,
+                search_pokemon_component_1.PokemonSearchComponent,
+                loader_component_1.LoaderComponent,
                 border_card_directive_1.BorderCardDirective,
                 pokemon_type_color_pipe_1.PokemonTypeColorPipe,
             ],

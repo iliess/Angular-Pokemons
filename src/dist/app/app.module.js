@@ -10,8 +10,14 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_module_1 = require("./app-routing.module");
 var pokemons_module_1 = require("./pokemons/pokemons.module");
+var in_memory_data_service_1 = require("./in-memory-data.service");
+var http_1 = require("@angular/common/http");
+var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var page_notfound_component_1 = require("./page-notfound.component");
 var app_component_1 = require("./app.component");
+var login_routing_module_1 = require("./login-routing.module");
+var login_component_1 = require("./login.component");
+var forms_1 = require("@angular/forms");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -19,11 +25,16 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                http_1.HttpClientModule,
+                forms_1.FormsModule,
+                angular_in_memory_web_api_1.HttpClientInMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { dataEncapsulation: false }),
                 pokemons_module_1.PokemonsModule,
+                login_routing_module_1.LoginRoutingModule,
                 app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
+                login_component_1.LoginComponent,
                 page_notfound_component_1.PageNotFoundComponent
             ],
             bootstrap: [app_component_1.AppComponent]

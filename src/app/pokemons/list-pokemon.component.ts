@@ -18,11 +18,11 @@ export class ListPokemonComponent  {
   constructor(private router: Router, private pokemonsServide : PokemonsService){}
 
   ngOnInit(){
-    this.pokemons = this.pokemonsServide.getPokemons();
+    this.pokemonsServide.getPokemons()
+    .subscribe(pokemons => this.pokemons = pokemons);
   }
 
   selectPokemon(pokemon: Pokemon){
-    alert("Vous avez cliqué sur "+pokemon.name)
     let link = ['/pokemon', pokemon.id]
     this.router.navigate(link)
   }
